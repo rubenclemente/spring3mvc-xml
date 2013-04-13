@@ -21,29 +21,28 @@
 		<div th:substituteby="include :: menu"></div>
 
 		<div>
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover table-condensed">
 				<caption th:text="#{users.table.caption}">Site Users</caption>
 				<thead>
 					<tr>
-						<th scope="col" th:text="#{user.id.label}">Id</th>
+						<th scope="col" th:text="#{user.id.label}">Idv</th>
 						<th scope="col" th:text="#{user.firstname.label}">First Name</th>
 						<th scope="col" th:text="#{user.lastname.label}">Last Name</th>
 						<th scope="col" th:text="#{user.username.label}">Username</th>
 						<th scope="col" th:text="#{user.role.label}">Role</th>
-						<th scope="col">Actions</th>
+						<th scope="col" th:text="#{user.options.label}">Options</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="u : ${users}">
 						<td th:text="${u.id}">1</td>
-						<td th:text="${u.firstName}">George</td>
-						<td th:text="${u.lastName}">Washington</td>
-						<td th:text="${u.username}">gwash</td>
+						<td th:text="${u.firstName}">FirsName1</td>
+						<td th:text="${u.lastName}">LastName1</td>
+						<td th:text="${u.username}">username1</td>
 						<td th:text="#{${'user.role.' + u.role}}">admin</td>
 						<td>
 							<a class="btn btn-mini btn-info" href="#" th:href="@{/users/edit(id=${u.id})}">edit</a>
 							<a class="btn btn-mini btn-danger" href="#" th:href="@{/users/delete(id=${u.id})}">delete</a> 
-
 						</td>
 					</tr>
 				</tbody>
@@ -90,7 +89,9 @@
 		<div th:include="include :: footer" class="footer"></div>
 	</div>
 
+	<!--
 	<script src="../../resources/bootstrap/js/bootstrap.js" th:src="@{/resources/bootstrap/js/bootstrap.js}"/>
+	-->
 	<script src="../../resources/jquery/js/jquery-1.9.0.js" th:src="@{/resources/jquery/js/jquery-1.9.0.js}"/>
 	<script src="../../resources/js/custom.js" th:src="@{/resources/js/custom.js}"/>
 	

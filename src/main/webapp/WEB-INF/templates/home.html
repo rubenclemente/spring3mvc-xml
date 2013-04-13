@@ -21,7 +21,9 @@
 		<div th:substituteby="include :: menu"></div>
 
 		<div class="home">
-			<p>Welcome <strong><span class="authname" th:text="${authname}">user</span></strong> to <span th:text="#{app.name}">App name</span>!</p>
+			<h1><span th:text="#{home.title}">Welcome!</span>!</h1>
+			
+			<p><strong><span class="authname" th:text="${authname}">user</span></strong> to <span th:text="#{app.name}">App name</span></p>
 		</div>
 		
 		<div th:include="include :: footer" class="footer"></div>

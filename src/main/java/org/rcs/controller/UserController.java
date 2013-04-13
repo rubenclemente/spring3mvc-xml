@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,6 +35,11 @@ public class UserController {
 	@ModelAttribute("allRoles")
 	public List<Integer> getAllRoles() {
 		return RoleUtil.roles();
+	}
+
+	@ModelAttribute("authname")
+	public String getAuthname() {
+		return SecurityContextHolder.getContext().getAuthentication().getName();
 	}
 
 	@RequestMapping
