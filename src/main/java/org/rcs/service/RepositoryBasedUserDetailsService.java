@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.rcs.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,25 +20,29 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class RepositoryBasedUserDetailsService implements UserDetailsService {
 
+	private final Logger logger = Logger.getLogger(this.getClass());
+
 	@Autowired
 	private UserRepository userRepository;
 
 	/**
-	 * Returns a populated {@link UserDetails} object. The username is first retrieved from
-	 * the database and then mapped to a {@link UserDetails} object.
+	 * Returns a populated {@link UserDetails} object. The username is first retrieved from the database and then mapped
+	 * to a {@link UserDetails} object.
 	 */
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		try {
 			org.rcs.domain.Suser domainUser = this.userRepository.findByUsername(username);
 
-			if (domainUser != null) {
-				System.out.println("...getting user: " + domainUser.getFirstName());
-				System.out.println("...getting role: " + domainUser.getRole().getRole());
+			if (this.logger.isDebugEnabled()) {
+				if (domainUser != null) {
+					this.logger.debug("...getting user: " + domainUser.getFirstName());
+					this.logger.debug("...getting role: " + domainUser.getRole().getRole());
 
-			}
-			else {
-				System.out.println("...getting user: null");
+				}
+				else {
+					this.logger.debug("...getting user: null");
+				}
 			}
 
 			boolean enabled = true;
@@ -45,16 +50,12 @@ public class RepositoryBasedUserDetailsService implements UserDetailsService {
 			boolean credentialsNonExpired = true;
 			boolean accountNonLocked = true;
 
-			return new User(
-					domainUser.getUsername(),
-					domainUser.getPassword().toLowerCase(),
-					enabled,
-					accountNonExpired,
-					credentialsNonExpired,
-					accountNonLocked,
-					this.getAuthorities(domainUser.getRole().getRole()));
+			return new User(domainUser.getUsername(), domainUser.getPassword().toLowerCase(), enabled,
+					accountNonExpired, credentialsNonExpired, accountNonLocked, this.getAuthorities(domainUser
+							.getRole().getRole()));
 
-		} catch (Exception e) {
+		}
+		catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
@@ -83,7 +84,8 @@ public class RepositoryBasedUserDetailsService implements UserDetailsService {
 			roles.add("ROLE_USER");
 			roles.add("ROLE_ADMIN");
 
-		} else if (role.intValue() == 2) {
+		}
+		else if (role.intValue() == 2) {
 			roles.add("ROLE_USER");
 		}
 
@@ -101,6 +103,7 @@ public class RepositoryBasedUserDetailsService implements UserDetailsService {
 		for (String role : roles) {
 			authorities.add(new SimpleGrantedAuthority(role));
 		}
+
 		return authorities;
 	}
 }

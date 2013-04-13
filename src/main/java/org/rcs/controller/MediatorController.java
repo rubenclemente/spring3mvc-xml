@@ -11,11 +11,11 @@ public class MediatorController {
 	@RequestMapping(value = "/")
 	public String getHomePage(ModelMap model) {
 		model.addAttribute("authname", SecurityContextHolder.getContext().getAuthentication().getName());
-		//Redirect in order to the navigation highlight works properly
+		// Redirect in order to the navigation highlight works properly
 		return "redirect:/home";
 	}
 
-	@RequestMapping(value= "/home")
+	@RequestMapping(value = "/home")
 	public String getHomePage2(ModelMap model) {
 		model.addAttribute("authname", SecurityContextHolder.getContext().getAuthentication().getName());
 		return "home";

@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 
 import org.codehaus.jackson.annotate.JsonManagedReference;
 
-@Entity(name="suser")
+@Entity(name = "suser")
 public class Suser {
 
 	@Id
@@ -20,16 +20,17 @@ public class Suser {
 	private String firstName;
 	private String lastName;
 
-	@Column(unique=true)
+	@Column(unique = true)
 	private String username;
 
 	private String password;
 
 	@JsonManagedReference
-	@OneToOne(mappedBy="suser", cascade={CascadeType.ALL})
+	@OneToOne(mappedBy = "suser", cascade = { CascadeType.ALL })
 	private Role role;
 
-	public Suser() {}
+	public Suser() {
+	}
 
 	public Suser(String username, String password, String firstName, String lastName, Role role) {
 		this.username = username;

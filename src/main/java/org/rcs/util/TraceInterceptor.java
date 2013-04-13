@@ -11,14 +11,15 @@ import org.springframework.aop.interceptor.CustomizableTraceInterceptor;
 public class TraceInterceptor extends CustomizableTraceInterceptor {
 
 	private static final long serialVersionUID = 287162721460370957L;
-	protected static Logger logger4J = Logger.getLogger("aop");
+	protected static Logger logger = Logger.getLogger("aop");
 
 	@Override
 	protected void writeToLog(Log logger, String message, Throwable ex) {
 		if (ex != null) {
-			logger4J.debug(message, ex);
-		} else {
-			logger4J.debug(message);
+			logger.debug(message, ex);
+		}
+		else {
+			logger.debug(message);
 		}
 	}
 
