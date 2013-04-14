@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/util/spring-util-3.1.xsd">
   
 	<!-- Declare the view resolver (Thymeleaf resolver) -->
+	<!-- With characterEncoding="UTF-8" we can use characters like 'áéíóúñÑ©' directly in the *.html -->
 	<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver"
 		p:prefix="/WEB-INF/templates/"
 		p:suffix=".html"

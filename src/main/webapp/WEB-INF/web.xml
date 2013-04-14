@@ -2,9 +2,9 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
-	<display-name>Spring Social Tutorial</display-name>
+	<display-name>Spring 3 MVC (xml) Skeleton</display-name>
 
-	<!-- Characters like 'áéíóúñÑ' are not printed well -->
+	<!-- Characters like 'áéíóúñÑ©' are not printed well -->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -22,6 +22,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<!-- Spring security filter -->
 	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>

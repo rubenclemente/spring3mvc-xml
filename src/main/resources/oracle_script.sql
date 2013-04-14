@@ -4,6 +4,16 @@ Schema = "APPUSERS"
 Database = Oracle XE
 */
 
+-- DROPS
+
+DROP TABLE role;
+DROP TABLE suser;
+/*
+DROP SEQUENCE role_seq;
+DROP SEQUENCE suser_seq;
+*/
+DROP SEQUENCE hibernate_sequence;
+
 -- Table ROLE
 
 CREATE TABLE APPUSERS.ROLE
