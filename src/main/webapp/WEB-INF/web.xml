@@ -2,6 +2,7 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
+	
 	<display-name>Spring 3 MVC (xml) Skeleton</display-name>
 
 	<!-- Characters like 'áéíóúñÑ©' are not printed well -->
@@ -35,8 +36,8 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-		/WEB-INF/spring-security.xml
-		/WEB-INF/applicationContext.xml
+			/WEB-INF/spring-security.xml
+			/WEB-INF/applicationContext.xml
 		</param-value>
 	</context-param>
 
